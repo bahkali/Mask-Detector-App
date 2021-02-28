@@ -19,6 +19,17 @@ class _MySplashPageState extends State<MySplashPage> {
           color: Colors.black
         ),
       ),
+      image: Image.asset("assets/splash.png"),
+      photoSize: 150,
+      backgroundColor: Colors.white,
+      loaderColor: Colors.black,
+      loadingText: Text(
+        "From KmadStudio by Kaly",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 16.0
+        ),
+      ),
     );
   }
 }
