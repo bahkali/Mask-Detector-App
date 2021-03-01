@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:camera/camera.dart';
 import 'package:facemaskapp/main.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 child: Text(
                   result,
                   style: TextStyle(
-                    backgroundColor: Colors.black54,
+                    backgroundColor: Colors.cyan,
                     fontSize: 30,
                     color: Colors.white,
                   ),
@@ -162,16 +164,52 @@ class _HomePageState extends State<HomePage> {
               Row(
                 children: <Widget>[
                   Text(
-                    "Kaly Bah",
+                        "Kaly Bah",
+                        style: TextStyle(
+                            fontFamily: 'PatuaOne',
+                            fontSize: 40.0,
+                            color: Colors.cyan,
+                            fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Software and Machine Learning Engineer',
                     style: TextStyle(
-                        fontSize: 40.0,
-                        color: Colors.blueAccent,
-                        fontWeight: FontWeight.bold,
+                      fontFamily: 'Open Sans',
+                      fontSize: 20,
+                      letterSpacing: 2.5,
+                      color: Colors.cyan.shade100,
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                 ],
               ),
-
+              Container(
+                padding: EdgeInsets.all(10.0),
+                color: Colors.cyan,
+                margin: EdgeInsets.symmetric(
+                  vertical: 10.0,
+                  horizontal: 25.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                        Icons.link,
+                        color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      "www.linkedin.com/in/kaly-mamadou"
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         )
