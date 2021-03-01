@@ -87,14 +87,31 @@ class _HomePageState extends State<HomePage> {
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.blueAccent,
             title: Padding(
               padding: EdgeInsets.only(top: 40.0),
               child: Center(
-                child: Text(" "),
+                child: Text(
+                  result,
+                  style: TextStyle(
+                    backgroundColor: Colors.black54,
+                    fontSize: 30,
+                    color: Colors.white,
+                  ),
+                ),
               ),
 
             ),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.info, color: Colors.white, size: 30, ),
+                padding: const EdgeInsets.only(right: 15),
+                onPressed: (){
+                  _myModelBottomSheet(context);
+                },
+              )
+            ],
+
           ),
           body: Column(
             children: [Positioned(
@@ -116,5 +133,40 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void _myModelBottomSheet(context){
+    showModalBottomSheet(context: context, builder: (BuildContext bc){
+      return Container(
+        height: MediaQuery.of(context).size.height * .60,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Text('Authors:'),
+                  Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.cancel, color: Colors.orange, size: 25,),
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                  )
+                ],
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    "Kaly Bah",
+                    style: TextStyle( fontSize: 30, color: Colors.blueAccent),
+                  ),
+                ],
+              )
+            ],
+          ),
+        )
+      );
+    });
   }
 }
