@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
       home: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.blueAccent,
+            backgroundColor: Colors.cyan,
             title: Padding(
               padding: EdgeInsets.only(top: 40.0),
               child: Center(
@@ -155,14 +155,23 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('assets/profile-pic.jpg'),
+              ),
               Row(
                 children: <Widget>[
                   Text(
                     "Kaly Bah",
-                    style: TextStyle( fontSize: 30, color: Colors.blueAccent),
+                    style: TextStyle(
+                        fontSize: 40.0,
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
-              )
+              ),
+
             ],
           ),
         )

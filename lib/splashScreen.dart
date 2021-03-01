@@ -18,17 +18,17 @@ class _MySplashPageState extends State<MySplashPage> {
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,
-          color: Colors.black
+          color: Colors.white
         ),
       ),
       image: Image.asset("assets/splash.png"),
       photoSize: 150,
-      backgroundColor: Colors.white,
-      loaderColor: Colors.black,
+      backgroundColor: Colors.cyan,
+      loaderColor: Colors.white,
       loadingText: Text(
         "From KmadStudio by Kaly",
         style: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
           fontSize: 16.0
         ),
       ),
