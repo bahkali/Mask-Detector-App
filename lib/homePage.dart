@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:facemaskapp/main.dart';
 import 'package:flutter/material.dart';
+import 'package:tflite/tflite.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,16 +28,54 @@ class _HomePageState extends State<HomePage> {
           if(!isWorking){
             isWorking = true,
             imgCamera = imageFromStream,
+            runModelOnFrame(),
           }
         });
       });
     });
   }
 
+  loadModel ( ) async {
+    await Tflite.loadModel(model: 'assets/model.tflite', labels: "assets/labels.txt");
+  }
+
+  runModelOnFrame() async {
+    if(imgCamera != null){
+      var recognitions = await Tflite.runModelOnFrame(
+          bytesList: imgCamera.planes.map((plane){
+            return plane.bytes;
+          }).toList(),
+        imageHeight: imgCamera.height,
+        imageWidth: imgCamera.width,
+        imageMean: 127.5,
+        imageStd: 127.5,
+        rotation: 90,
+        numResults: 1,
+        threshold: 0.1,
+        asynch: true,
+      );
+      result = "";
+      recognitions.forEach((res) {
+        result += res['label'] + "\n";
+      });
+      setState(() {
+        result;
+      });
+      isWorking = false;
+    }
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    Tflite.close();
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
     initCamera();
+    loadModel();
   }
 
   @override
